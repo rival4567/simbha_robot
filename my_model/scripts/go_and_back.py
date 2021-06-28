@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 from geometry_msgs.msg import Twist
@@ -13,7 +13,7 @@ class DrawASquare():
         # What to do you ctrl + c
         rospy.on_shutdown(self.shutdown)
 
-        self.cmd_vel = rospy.Publisher('cmd_vel', Twist, queue_size=10)
+        self.cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
 
         # 5 HZ
         r = rospy.Rate(10)

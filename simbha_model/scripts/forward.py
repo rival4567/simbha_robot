@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 import math
@@ -13,11 +13,11 @@ class GoForward():
         rospy.init_node('forward', anonymous=False)
         rospy.loginfo("To stop robot CTRL + C")
         # rospy.on_shutdown(self.shutdown)
-        rospy.Subscriber('scan', LaserScan, self.range)
-        rospy.Subscriber('move_base_simple/goal',
+        rospy.Subscriber('/scan', LaserScan, self.range)
+        rospy.Subscriber('/move_base_simple/goal',
                          PoseStamped, self.destination)
-        rospy.Subscriber('odom', Odometry, self.robot_parameters)
-        self.cmd_vel = rospy.Publisher('cmd_vel', Twist, queue_size=10)
+        rospy.Subscriber('/odom', Odometry, self.robot_parameters)
+        self.cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
         # r = rospy.Rate(10);
         self.move_cmd = Twist()
         self.center = 0
